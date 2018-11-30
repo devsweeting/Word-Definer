@@ -9,7 +9,6 @@ get ('/') do
     Word.add_dictionary
   end
   @dictionary = Word.all
-  binding.pry
   erb(:index)
 end
 
@@ -22,7 +21,14 @@ post('/') do
   erb(:index)
 end
 
-get('/details/:id') do
-  @word = Word.find(params[:id])
-  erb(:details)
+get('/output/:id') do
+  uid = params[:id].to_i
+  @word = Word.find(uid)
+  erb(:output)
+end
+
+delete ("/output/:id") do
+  uid = params[:id].to_i - 1
+  @word = Word.delete_content(uid)
+  redirect "/"
 end

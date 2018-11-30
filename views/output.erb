@@ -1,2 +1,14 @@
-<h1> <%=  @cexample.ex %></h1>
-<a href="/">Home</a>
+<h1> <%=  @word.word %></h1>
+
+<p><%=  @word.definition %></p>
+
+<button type="submit" class="btn btn-success"><a href="/">Home</a></button>
+
+<br>
+
+<div>
+  <form method="post" action="/output/:id">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+</div>
