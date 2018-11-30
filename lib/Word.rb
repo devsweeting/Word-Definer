@@ -17,10 +17,12 @@ class Word
     @id = @@words.length
   end
 
-  # def Dictionary
-  #   cat = Word.new({@word => "cat", @definition => "feline"})
-  #   dog = Word.new({@word => "dog", @definition => "canine"})
-  # end
+  def self.add_dictionary
+    cat = Word.new({:word => "cat", :definition => "feline"})
+    cat.save
+    dog = Word.new({:word => "dog", :definition => "canine"})
+    dog.save
+  end
 
 
 
@@ -67,13 +69,3 @@ end
 # "koala" => "marsupial",
 # "iguana" => "reptile",
 # "hawk" => "bird"
-
-# <ul>
-#   <% if @list.kind_of?(Array) %>
-#     <% @list.each do |each| %>
-#       <p id='<%= each.id %>'><a href='/output/<%= each.id %>'><%= each.name %></a></p>
-#     <% end %>
-#   <% else %>
-#     <p id='<%= @list.id %>'><a href='/output/<%= @list.id %>'><%= @list.name %></a></p>
-#   <% end %>
-# </ul>

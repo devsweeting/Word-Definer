@@ -5,11 +5,11 @@ also_reload('./lib/**/*.rb')
 require './lib/Word'
 
 get ('/') do
-  cat = Word.new({:word => "cat", :definition => "feline"})
-  cat.save
-  dog = Word.new({:word => "dog", :definition => "canine"})
-  dog.save
+  if Word.all == []
+    Word.add_dictionary
+  end
   @dictionary = Word.all
+  binding.pry
   erb(:index)
 end
 
