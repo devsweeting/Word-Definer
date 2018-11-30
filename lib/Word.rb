@@ -1,19 +1,26 @@
 class Word
   attr_accessor(:word, :definition)
 
-  @@words = {
-    "cat" => "feline",
-    "dog" => "canine",
-    "koala" => "marsupial",
-    "iguana" => "reptile",
-    "hawk" => "bird"
-  }
+  @@words = []
+  #
+  #  = {
+  #   "cat" => "feline",
+  #   "dog" => "canine",
+  #   "koala" => "marsupial",
+  #   "iguana" => "reptile",
+  #   "hawk" => "bird"
+  # }
 
-  # def initialize(atttributes)
-  #   @word = attributes.fetch(:word)
-  #   @definition = attributes.fetch(:definition)
-  #   @id = @@words.length
-  # end
+  def Dictionary
+    cat = Word.new({@word => "cat", @definition => "feline"})
+    dog = Word.new({@word => "dog", @definition => "canine"})
+  end
+
+  def initialize(atttributes)
+    @word = attributes.fetch(:word)
+    @definition = attributes.fetch(:definition)
+    @id = @@words.length
+  end
 
 
   def self.all
@@ -54,3 +61,18 @@ class Word
    self.reassign_ids
   end
 end
+
+
+# "koala" => "marsupial",
+# "iguana" => "reptile",
+# "hawk" => "bird"
+
+# <ul>
+#   <% if @list.kind_of?(Array) %>
+#     <% @list.each do |each| %>
+#       <p id='<%= each.id %>'><a href='/output/<%= each.id %>'><%= each.name %></a></p>
+#     <% end %>
+#   <% else %>
+#     <p id='<%= @list.id %>'><a href='/output/<%= @list.id %>'><%= @list.name %></a></p>
+#   <% end %>
+# </ul>

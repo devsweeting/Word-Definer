@@ -2,22 +2,22 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'pry'
 also_reload('./lib/**/*.rb')
-require './lib/Mrfluffles'
+require './lib/Word'
 
 get ('/') do
-  @list = Mrfluffles.all
+  @list = Word.all
   erb(:index)
 end
 
 post('/') do
-  name = params["name"]
-  new_cat = Mrfluffles.new(name)
-  new_cat.save
-  @list = Mrfluffles.all
+  word = params["user_word"]
+  new_word = Word.new(word)
+  new_word.save
+  @word = Word.all
   erb(:index)
 end
 
 get('/details/:id') do
-  @cat = Mrfluffles.find(params[:id])
+  @word = Word.find(params[:id])
   erb(:details)
 end
