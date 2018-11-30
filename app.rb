@@ -12,7 +12,11 @@ get ('/') do
   erb(:index)
 end
 
-post('/') do
+get ('/addword') do
+  erb(:addword)
+end
+
+post('/addword') do
   word = params["user_word"]
   definition = params["user_definition"]
   new_word = Word.new({:word => word, :definition => definition})
@@ -27,8 +31,12 @@ get('/output/:id') do
   erb(:output)
 end
 
+# Cannot delete correct word, ID comes back 0 in pry, FRANZ I NEED HELP DURING CHECK IN
 delete ("/output/:id") do
-  uid = params[:id].to_i - 1
-  @word = Word.delete_content(uid)
+  id = params[:id].to_i
+  binding.pry
+  @word = Word.delete_content(id)
+  binding.pry
   redirect "/"
 end
+# -----------------------------------
