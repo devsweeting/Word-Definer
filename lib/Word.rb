@@ -2,18 +2,18 @@ class Word
   attr_accessor(:word, :definition)
 
   @@words = {
-    "Cat" => "feline",
-    "Dog" => "canine",
+    "cat" => "feline",
+    "dog" => "canine",
     "koala" => "marsupial",
     "iguana" => "reptile",
     "hawk" => "bird"
   }
 
-  def initialize(atttributes)
-    @word = attributes.fetch(:word)
-    @definition = attributes.fetch(:definition)
-    @id = @@words.length
-  end
+  # def initialize(atttributes)
+  #   @word = attributes.fetch(:word)
+  #   @definition = attributes.fetch(:definition)
+  #   @id = @@words.length
+  # end
 
 
   def self.all
@@ -52,5 +52,5 @@ class Word
   def self.delete_content(id)
    @@words.delete_at(id)
    self.reassign_ids
- end
+  end
 end
