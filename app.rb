@@ -12,6 +12,12 @@ get ('/') do
   erb(:index)
 end
 
+get('/output/:id') do
+  uid = params[:id].to_i
+  @word = Word.find(uid)
+  erb(:output)
+end
+
 get ('/addword') do
   erb(:addword)
 end
@@ -25,11 +31,6 @@ post('/addword') do
   erb(:index)
 end
 
-get('/output/:id') do
-  uid = params[:id].to_i
-  @word = Word.find(uid)
-  erb(:output)
-end
 
 # Cannot delete correct word, ID comes back 0 in pry, FRANZ I NEED HELP DURING CHECK IN
 delete ("/output/:id") do
