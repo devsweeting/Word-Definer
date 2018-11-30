@@ -1,5 +1,5 @@
 class Word
-  attr_accessor(:word, :definition)
+  attr_accessor(:word, :definition, :id)
 
   @@words = []
   #
@@ -11,16 +11,17 @@ class Word
   #   "hawk" => "bird"
   # }
 
-  def Dictionary
-    cat = Word.new({@word => "cat", @definition => "feline"})
-    dog = Word.new({@word => "dog", @definition => "canine"})
-  end
-
-  def initialize(atttributes)
+  def initialize(attributes)
     @word = attributes.fetch(:word)
     @definition = attributes.fetch(:definition)
     @id = @@words.length
   end
+
+  # def Dictionary
+  #   cat = Word.new({@word => "cat", @definition => "feline"})
+  #   dog = Word.new({@word => "dog", @definition => "canine"})
+  # end
+
 
 
   def self.all
@@ -41,7 +42,7 @@ class Word
 
   def self.find(id)
     item_id = id.to_i()
-    @@cats.each do |item|
+    @@words.each do |item|
       if item.id == item_id
         return item
       end

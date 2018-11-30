@@ -1,10 +1,28 @@
 <h1>Word Definer</h1>
+<br>
 
+<h3>Dictionary</h3>
+<ul>
+  <% if @dictionary.kind_of?(Array) %>
+    <% @dictionary.each do |each| %>
+      <p id='<%= each.id %>'><a href='/output/<%= each.id %>'><%= each.word %></a></p>
+    <% end %>
+  <% else %>
+    <p id='<%= @dictionary.id %>'><a href='/output/<%= @dictionary.id %>'><%= @dictionary.word %></a></p>
+  <% end %>
+</ul>
 
+<br>
 
-<form action="/" method="post">
-  <div class="form-group">
-    <input type="text" name="word" placeholder="Enter word">
-  </div>
-  <button type="submit" name="button">Add Word</button>
+<h3>Add a new word</h3>
+<form method="post" action="/">
+  <fieldset>
+    <label for="title"> Add Word</label>
+  <input type="text" name="user_word" id="user_word">
+  </fieldset>
+  <fieldset>
+    <label for="definition">Definition:</label>
+    <textarea name="user_definition" id="user_definition" rows="10" cols="50"></textarea>
+  </fieldset>
+  <input type="submit">
 </form>

@@ -5,15 +5,20 @@ also_reload('./lib/**/*.rb')
 require './lib/Word'
 
 get ('/') do
-  @list = Word.all
+  cat = Word.new({:word => "cat", :definition => "feline"})
+  cat.save
+  dog = Word.new({:word => "dog", :definition => "canine"})
+  dog.save
+  @dictionary = Word.all
   erb(:index)
 end
 
 post('/') do
   word = params["user_word"]
-  new_word = Word.new(word)
-  new_word.save
-  @word = Word.all
+  definition = params["user_definition"]
+  new_word = Word.new({:word => word, :definition => definition})
+  @dictionary = new_word.save
+  @dictionary = Word.all
   erb(:index)
 end
 
