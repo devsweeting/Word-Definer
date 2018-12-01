@@ -1,5 +1,5 @@
 class Word
-  attr_accessor(:word, :definition, :id)
+  attr_accessor(:word, :definition, :id, :definition2)
 
   @@words = []
 
@@ -26,6 +26,10 @@ class Word
 
   def self.find_definition(word)
     @@words.fetch(word)
+  end
+
+  def self.clear
+    @@words = []
   end
 
   def self.find(id)
