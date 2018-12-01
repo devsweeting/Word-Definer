@@ -6,7 +6,7 @@ set(:show_exceptions, false)
 describe('the Word Definer', {:type => :feature}) do
   it('Shows a list of words') do
     visit('/')
-    expect(page).to have_content('Word Play')
+    expect(page).to have_content('Animal Dictionary')
   end
 end
 
@@ -16,7 +16,7 @@ describe('the Word Definer', {:type => :feature}) do
     fill_in('user_word', :with => 'test')
     fill_in('user_definition', :with => 'test words')
     click_button('Add')
-    expect(page).to have_content("Word Play")
+    expect(page).to have_content("Animal Dictionary")
   end
 end
 
