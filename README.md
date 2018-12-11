@@ -14,7 +14,8 @@ This application contains a Word class. The homepage of the app should list all 
 * Clone GitHub URL in terminal_
 * Open the html file in your Web Browser_
 * Open file in Atom_
-* Link to github:
+* Link to github: https://github.com/devsweeting/Word-Definer.git
+* Link to Heroku app: https://quiet-reaches-44410.herokuapp.com/
 
 _{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
