@@ -20,7 +20,7 @@ _{Leave nothing to chance! You want it to be easy for potential users, employers
 
 ## Known Bugs
 
-* Delete function does not currently work
+* Delete function does not currently work, App is deployed to Heroku but it won't start the application. Highly reccommend starting from local server.
 
 ## Support and contact details
 

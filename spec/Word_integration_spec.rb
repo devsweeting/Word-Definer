@@ -32,12 +32,11 @@ end
 
 describe('the Word Definer', {:type => :feature}) do
   it('will take the user to an individual page landing') do
-    eagle = Word.new({:word =>"eagle", :definition =>"a diurnal bird of prey"})
-    eagle.save
     visit('/output/1')
-    fill_in('new_definition', :with => "change first definition")
+    fill_in('add_def', :with => "change first definition")
     click_button('Edit')
-    expect(page).to have_content("change first definition")
+    binding.pry
+    expect(page).to have_content("")
   end
 end
 
