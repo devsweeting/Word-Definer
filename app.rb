@@ -12,12 +12,7 @@ get ('/') do
   erb(:index)
 end
 
-get('/output/:id') do
-  uid = params[:id].to_i
-  @word = Word.find(uid)
-  erb(:output)
-end
-
+# Add new word ----------
 get ('/addword') do
   erb(:addword)
 end
@@ -29,6 +24,36 @@ post('/addword') do
   @dictionary = new_word.save
   @dictionary = Word.all
   erb(:index)
+end
+#  --------------------
+
+
+# word page
+get('/output/:id') do
+  @uid = params[:id].to_i
+  @word = Word.find(@uid)
+  @dictionary = Word.all
+  erb(:output)
+end
+
+# edit first definition
+post ("/output/:id") do
+  @uid = params[:id].to_i
+  new_def = params.fetch("edit_def")
+  @word = Word.find(@uid)
+  @word.edit_def(new_def)
+  @dictionary = Word.all
+  erb(:output)
+end
+
+# Add a new definition
+post ("/output/:id/add_def") do
+  @uid = params[:id].to_i
+  new_def = params.fetch("add_def")
+  @word = Word.find(@uid)
+  @word.add_def(new_def)
+  @dictionary = Word.all
+  erb(:output)
 end
 
 

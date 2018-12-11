@@ -11,23 +11,36 @@ describe('the Word Definer', {:type => :feature}) do
 end
 
 describe('the Word Definer', {:type => :feature}) do
-  it('Shows a list of words and displays theri definitions') do
+  it('Shows a list of words and displays their definitions') do
     visit('/addword')
     fill_in('user_word', :with => 'test')
     fill_in('user_definition', :with => 'test words')
     click_button('Add')
-    expect(page).to have_content("Animal Dictionary")
+    expect(page).to have_content("test")
   end
 end
 
-# describe('the Word Definer', {:type => :feature}) do
-#   it('will take the user to the add word page') do
-#     visit('/')
-#     click_button('Add New Word')
-#     expect(page).to have_content("Add a New Word")
-#   end
-# end
-#
+describe('the Word Definer', {:type => :feature}) do
+  it('will take the user to an individual page landing') do
+    eagle = Word.new({:word =>"eagle", :definition =>"a diurnal bird of prey"})
+    eagle.save
+    visit('/')
+    click_link('eagle')
+    expect(page).to have_content("a diurnal bird of prey")
+  end
+end
+
+describe('the Word Definer', {:type => :feature}) do
+  it('will take the user to an individual page landing') do
+    eagle = Word.new({:word =>"eagle", :definition =>"a diurnal bird of prey"})
+    eagle.save
+    visit('/output/1')
+    fill_in('new_definition', :with => "change first definition")
+    click_button('Edit')
+    expect(page).to have_content("change first definition")
+  end
+end
+
 # describe('the Word Definer', {:type => :feature}) do
 #   it('will take the user to the word definition page') do
 #     visit('/')

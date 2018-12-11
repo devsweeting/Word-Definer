@@ -1,40 +1,38 @@
 class Word
-  attr_accessor(:word, :definition, :id, :definition2)
+  attr_accessor(:word, :definition, :id)
 
-  @@words = []
+  @@dictionary = []
 
   def initialize(attributes)
       @word = attributes.fetch(:word)
-      @definition = attributes.fetch(:definition)
-      @id = @@words.length
-      if attributes.key?(:definition2) == true
-        @definition2 = attributes.fetch(:definition2)
-      end
+      @definition = [attributes.fetch(:definition)]
+      @id = @@dictionary.length + 1
+
   end
 
   def self.all
-    @@words
+    @@dictionary
   end
 
   def save
-   @@words.push(self)
+   @@dictionary.push(self)
   end
 
   def add_word (word, definition)
-    @@words.store(word, definition)
+    @@dictionary.store(word, definition)
   end
 
   def self.find_definition(word)
-    @@words.fetch(word)
+    @@dictionary.fetch(word)
   end
 
   def self.clear
-    @@words = []
+    @@dictionary = []
   end
 
   def self.find(id)
     item_id = id.to_i()
-    @@words.each do |item|
+    @@dictionary.each do |item|
       if item.id == item_id
         return item
       end
@@ -42,15 +40,23 @@ class Word
   end
 
   def self.reassign_ids
-    if (@@words != [])
-      @@words.each_with_index do |word, i|
+    if (@@dictionary != [])
+      @@dictionary.each_with_index do |word, i|
         word.id = i
       end
     end
   end
 
+  def edit_def (new_def)
+    self.definition = new_def
+  end
+
+  def add_def(definition)
+    @definition.push(definition)
+  end
+
   def self.delete_content(id)
-   @@words.delete_at(id)
+   @@dictionary.delete_at(id)
    self.reassign_ids
   end
 
@@ -81,14 +87,6 @@ class Word
 
     # exword = Word.new({:word =>"", :definition =>"", :definition2 =>""})
     # exword.save
-  end
-
-  def check_def2(word)
-    if word.key?(:definition2)
-      return true
-    else
-      return false
-    end
   end
 end
 

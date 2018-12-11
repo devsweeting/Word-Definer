@@ -1,13 +1,43 @@
 
 <h1> <%=  @word.word %></h1>
 
-<p><em><strong>Definition:</em></strong> <%=  @word.definition %></p>
+<% @dictionary.each do |each| %>
+  <% if each.id == @uid %>
+    <% each.definition.each do |definition| %>
+      <p><em><strong>Definition:</em></strong> <%=  definition %></p>
+
+      <% end %>
+    <% end %>
+  <% end %>
 
 <p> ID: <%=  @word.id %> </p>
+
+<br>
+
+<div>
+  <form method="post" action="/output/<%= @word.id %>">
+    <label for="new-definition">Edit first definition</label>
+    <input type="text" name="edit_def">
+    <button type="submit" class="btn btn-info">Edit</button>
+  </form>
+  <br>
+
+  <form method="post" action="/output/<%= @word.id %>/add_def">
+    <label for="add_def">Add new definition</label>
+    <input type="text" name="add_def">
+    <button type="submit" class="btn btn-info">Add Definition</button>
+  </form>
+</div>
+
+
 
 <button type="submit" class="btn btn-success"><a class="route" href="/">Home</a></button>
 
 <br>
+
+
+
+
 
 <div>
   <form method="post" action="/output/:id">
