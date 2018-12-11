@@ -35,15 +35,6 @@ describe('the Word Definer', {:type => :feature}) do
     visit('/output/1')
     fill_in('add_def', :with => "change first definition")
     click_button('Edit')
-    binding.pry
     expect(page).to have_content("")
   end
 end
-
-# describe('the Word Definer', {:type => :feature}) do
-#   it('will take the user to the word definition page') do
-#     visit('/')
-#     click_button('cat')
-#     expect(page).to have_content("a small domesticated carnivorous mammal")
-#   end
-# end
